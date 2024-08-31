@@ -1,0 +1,61 @@
+<!-- booking.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1><span style="color: #4CAF50;">Better</span>Way Clinic</h1>
+    </header>
+    <main>
+        <div class="container">
+            <h2 id="bookingTypeTitle">Book an Appointment</h2>
+            <div id="slotGrid" class="slot-grid"></div>
+            <button id="bookButton" class="book-button">Book Slot</button>
+        </div>
+    </main>
+    <script>
+        const slots = [
+            '10:00', '10:30', '11:00', '11:30', '12:00',
+            '12:30', '13:00', '13:30', '14:00', '14:30',
+            '15:00', '15:30', '16:00', '16:30', '17:00',
+            '17:30', '18:00', '18:30'
+        ];
+
+        function displayAvailableSlots() {
+            const slotGrid = document.getElementById('slotGrid');
+            slotGrid.innerHTML = ''; 
+
+            slots.forEach(slot => {
+                const slotDiv = document.createElement('div');
+                slotDiv.className = 'slot';
+                slotDiv.textContent = slot;
+                slotDiv.addEventListener('click', () => selectSlot(slot));
+                slotGrid.appendChild(slotDiv);
+            });
+        }
+
+        function selectSlot(slot) {
+            document.querySelectorAll('.slot').forEach(slotDiv => slotDiv.classList.remove('selected'));
+            document.querySelector(`.slot:contains('${slot}')`).classList.add('selected');
+        }
+
+        document.getElementById('bookButton').addEventListener('click', () => {
+            const selectedSlot = document.querySelector('.slot.selected');
+            if (selectedSlot) {
+                const slotTime = selectedSlot.textContent;
+                localStorage.setItem('selectedSlot', slotTime); 
+                window.location.href = 'index.html'; 
+            } else {
+                alert('Please select a slot first.');
+            }
+        });
+
+        displayAvailableSlots();
+    </script>
+</body>
+</html>

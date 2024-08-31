@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Betterway Hackathon</title>
+    <title>Clinic Booking System</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <h1>Hello World!</h1>
+    <header>
+        <h1><span style="color: #4CAF50;">Better</span>Way Clinic</h1>
+    </header>
+    <main>
+        <div class="container">
+            <div class="buttons">
+                <button id="bookClinicBtn">Book Clinic</button>
+                <button id="bookDoctor1Btn">Book Doctor 1</button>
+                <button id="bookDoctor2Btn">Book Doctor 2</button>
+            </div>
+            <div id="selectedSlot" class="hidden">
+                <h2>Selected Slot</h2>
+                <p id="slotTime">No slot selected</p>
+            </div>
+        </div>
+    </main>
     <script src="script.js"></script>
 </body>
-
 </html>
